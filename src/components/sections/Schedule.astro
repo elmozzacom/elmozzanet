@@ -1,0 +1,40 @@
+---
+const schedules = [
+	{ day: "Senin - Jumat", hour: "08.00 - 16.00", note: "Pemeriksaan rutin dan konsultasi." },
+	{ day: "Sabtu", hour: "08.00 - 13.00", note: "Kelas persiapan persalinan dan kontrol bayi." },
+	{ day: "Minggu", hour: "Libur", note: "Layanan darurat by appointment." }
+];
+---
+
+<section id="jadwal" class="section section-muted" aria-labelledby="schedule-title">
+	<div class="container">
+		<header class="section-heading">
+			<p class="eyebrow">Jadwal Praktik</p>
+			<h2 id="schedule-title">Jam Operasional Klinik</h2>
+		</header>
+
+		<div class="schedule-panel">
+			<table class="schedule-table">
+				<caption class="sr-only">Jadwal praktik Klinik Bidan Elmozza</caption>
+				<thead>
+					<tr>
+						<th scope="col">Hari</th>
+						<th scope="col">Jam</th>
+						<th scope="col">Catatan</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						schedules.map((item) => (
+							<tr>
+								<th scope="row">{item.day}</th>
+								<td>{item.hour}</td>
+								<td>{item.note}</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>

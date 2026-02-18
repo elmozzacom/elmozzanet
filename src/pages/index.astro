@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import Schedule from "../components/sections/Schedule.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Location from "../components/sections/Location.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<BaseLayout
+	title="Klinik Bidan Elmozza | Pendampingan Kehamilan dan Persalinan"
+	description="Klinik Bidan Elmozza menyediakan layanan kebidanan, pemeriksaan kehamilan, konsultasi laktasi, dan pendampingan persalinan dengan pendekatan hangat dan profesional."
+>
+	<Header />
+	<main id="main-content">
+		<Hero />
+		<Services />
+		<Schedule />
+		<Testimonials />
+		<Location />
+		<CTA />
+	</main>
+	<Footer />
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+const testimonials = [
+	{
+		name: "Rina, Ibu 1 Anak",
+		quote:
+			"Bidan sangat telaten, komunikasi jelas, dan membuat saya lebih tenang sepanjang kehamilan."
+	},
+	{
+		name: "Dewi, Ibu Hamil Trimester 3",
+		quote:
+			"Jadwal fleksibel dan edukasinya praktis. Saya dan suami merasa siap menghadapi persalinan."
+	},
+	{
+		name: "Sari, Ibu Bayi 4 Bulan",
+		quote:
+			"Konseling menyusui sangat membantu saat awal masa nifas. Pelayanannya ramah dan cepat."
+	}
+];
+---
+
+<section id="testimoni" class="section" aria-labelledby="testimonials-title">
+	<div class="container">
+		<header class="section-heading">
+			<p class="eyebrow">Cerita Pasien</p>
+			<h2 id="testimonials-title">Kepercayaan Keluarga Menjadi Prioritas Kami</h2>
+		</header>
+
+		<div class="grid grid-3">
+			{
+				testimonials.map((item) => (
+					<article class="testimonial-card">
+						<blockquote>
+							<p>&ldquo;{item.quote}&rdquo;</p>
+						</blockquote>
+						<cite>{item.name}</cite>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

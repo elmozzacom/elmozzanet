@@ -1,0 +1,53 @@
+---
+import Card from "../ui/Card.astro";
+
+const services = [
+	{
+		title: "Pemeriksaan Kehamilan Rutin",
+		description:
+			"Pemantauan perkembangan janin, tekanan darah, dan edukasi trimester sesuai kebutuhan ibu."
+	},
+	{
+		title: "Kelas Persiapan Persalinan",
+		description:
+			"Pendampingan latihan pernapasan, manajemen nyeri, dan persiapan mental bersama keluarga."
+	},
+	{
+		title: "Konsultasi Menyusui",
+		description:
+			"Dukungan teknik menyusui, perlekatan, serta manajemen produksi ASI pasca persalinan."
+	},
+	{
+		title: "Layanan Nifas dan Bayi Baru Lahir",
+		description:
+			"Pemeriksaan kondisi ibu dan bayi pada masa awal nifas untuk pemulihan yang optimal."
+	},
+	{
+		title: "Konseling Kesehatan Reproduksi",
+		description:
+			"Edukasi dan konsultasi personal terkait perencanaan keluarga dan kesehatan reproduksi."
+	},
+	{
+		title: "Imunisasi Dasar Bayi",
+		description:
+			"Jadwal imunisasi sesuai usia bayi dengan edukasi tindak lanjut setelah vaksinasi."
+	}
+];
+---
+
+<section id="layanan" class="section" aria-labelledby="services-title">
+	<div class="container">
+		<header class="section-heading">
+			<p class="eyebrow">Layanan Utama</p>
+			<h2 id="services-title">Perawatan Menyeluruh untuk Setiap Fase</h2>
+		</header>
+
+		<div class="grid grid-3">
+			{
+				services.map((service) => (
+					<Card title={service.title} description={service.description} />
+				))
+			}
+		</div>
+	</div>
+</section>

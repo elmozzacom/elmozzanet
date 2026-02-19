@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Schedule from "../components/sections/Schedule.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<BaseLayout
+	title="Jadwal Praktik Bidan Depok | Klinik El'Mozza"
+	description="Jadwal praktik Klinik El'Mozza Depok setiap hari pukul 07.30-21.00. Cek jam operasional terbaru sebelum datang."
+	keywords="jadwal bidan depok, jam praktik klinik elmozza, klinik bersalin depok buka hari apa"
+	image="https://files.elmozza.net/Elmozza.jpg"
+>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero" aria-labelledby="jadwal-page-title">
+			<div class="container content-narrow">
+				<h1 id="jadwal-page-title">Jadwal Praktik Klinik El'Mozza</h1>
+				<p>
+					Klinik melayani pasien setiap hari dengan jam operasional 07.30-21.00. Untuk kunjungan
+					lebih nyaman, disarankan konfirmasi via WhatsApp terlebih dahulu.
+				</p>
+				<p class="page-links">
+					<a href="/layanan">Lihat layanan</a>
+					<a href="/lokasi-kontak">Lihat lokasi</a>
+					<a href="/ulasan-google">Lihat ulasan</a>
+				</p>
+			</div>
+		</section>
+		<Schedule />
+		<CTA />
+	</main>
+	<Footer />
+</BaseLayout>

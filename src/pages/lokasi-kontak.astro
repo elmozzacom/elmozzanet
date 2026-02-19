@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Location from "../components/sections/Location.astro";
+---
+
+<BaseLayout
+	title="Lokasi Klinik Bidan di Depok | Klinik El'Mozza"
+	description="Alamat Klinik El'Mozza: Jl. K.H.M. Usman No.88, Kukusan, Beji, Depok. Hubungi 0811-1712-718 untuk informasi dan reservasi."
+	keywords="alamat klinik elmozza, lokasi bidan depok, kontak klinik bersalin depok, nomor wa bidan depok"
+	image="https://files.elmozza.net/Elmozza.jpg"
+>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero" aria-labelledby="lokasi-page-title">
+			<div class="container content-narrow">
+				<h1 id="lokasi-page-title">Lokasi dan Kontak Klinik El'Mozza</h1>
+				<p>
+					Halaman ini memuat alamat lengkap, nomor telepon/WhatsApp, serta peta Google Maps untuk
+					memudahkan kunjungan ke klinik.
+				</p>
+				<p class="page-links">
+					<a href="/jadwal-praktik">Lihat jadwal praktik</a>
+					<a href="/layanan">Lihat layanan</a>
+					<a href="/faq">Baca FAQ</a>
+				</p>
+			</div>
+		</section>
+		<Location />
+	</main>
+	<Footer />
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+const links = [
+	{
+		title: "Layanan Bidan",
+		description: "Detail layanan kebidanan, pemeriksaan kehamilan, dan konsultasi menyusui.",
+		href: "/layanan"
+	},
+	{
+		title: "Jadwal Praktik",
+		description: "Jam operasional harian Klinik El'Mozza dari Senin sampai Minggu.",
+		href: "/jadwal-praktik"
+	},
+	{
+		title: "Lokasi dan Kontak",
+		description: "Alamat klinik, nomor telepon, WhatsApp, dan akses Google Maps.",
+		href: "/lokasi-kontak"
+	},
+	{
+		title: "Ulasan Google",
+		description: "Kumpulan ulasan pasien langsung dari Google Reviews.",
+		href: "/ulasan-google"
+	},
+	{
+		title: "Tentang Klinik",
+		description: "Profil Klinik El'Mozza dan komitmen layanan untuk ibu dan bayi.",
+		href: "/tentang-klinik"
+	},
+	{
+		title: "FAQ Pasien",
+		description: "Pertanyaan umum seputar layanan, jadwal, dan reservasi klinik.",
+		href: "/faq"
+	}
+];
+---
+
+<section class="section" aria-labelledby="site-links-title">
+	<div class="container">
+		<header class="section-heading">
+			<p class="eyebrow">Jelajahi Halaman</p>
+			<h2 id="site-links-title">Informasi Klinik dalam Halaman Terpisah</h2>
+		</header>
+		<div class="quick-links-grid">
+			{
+				links.map((item) => (
+					<article class="quick-link-card">
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+						<a href={item.href} aria-label={`Buka halaman ${item.title}`}>
+							Kunjungi Halaman
+						</a>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

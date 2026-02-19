@@ -5,6 +5,7 @@ import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/sections/Hero.astro";
 import Services from "../components/sections/Services.astro";
 import Activities from "../components/sections/Activities.astro";
+import SiteLinks from "../components/sections/SiteLinks.astro";
 import Schedule from "../components/sections/Schedule.astro";
 import GoogleReviews from "../components/sections/GoogleReviews.astro";
 import Location from "../components/sections/Location.astro";
@@ -57,6 +58,50 @@ const localBusinessSchema = {
 		"klinik ibu dan anak depok"
 	]
 };
+
+const siteNavigationSchema = {
+	"@context": "https://schema.org",
+	"@type": "ItemList",
+	name: "Navigasi Halaman Klinik El'Mozza",
+	itemListElement: [
+		{
+			"@type": "SiteNavigationElement",
+			position: 1,
+			name: "Beranda",
+			url: "https://elmozza.net/"
+		},
+		{
+			"@type": "SiteNavigationElement",
+			position: 2,
+			name: "Layanan",
+			url: "https://elmozza.net/layanan"
+		},
+		{
+			"@type": "SiteNavigationElement",
+			position: 3,
+			name: "Jadwal Praktik",
+			url: "https://elmozza.net/jadwal-praktik"
+		},
+		{
+			"@type": "SiteNavigationElement",
+			position: 4,
+			name: "Lokasi Kontak",
+			url: "https://elmozza.net/lokasi-kontak"
+		},
+		{
+			"@type": "SiteNavigationElement",
+			position: 5,
+			name: "Ulasan Google",
+			url: "https://elmozza.net/ulasan-google"
+		},
+		{
+			"@type": "SiteNavigationElement",
+			position: 6,
+			name: "FAQ",
+			url: "https://elmozza.net/faq"
+		}
+	]
+};
 ---
 
 <BaseLayout
@@ -67,11 +112,13 @@ const localBusinessSchema = {
 >
 	<Fragment slot="head">
 		<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+		<script type="application/ld+json" set:html={JSON.stringify(siteNavigationSchema)}></script>
 	</Fragment>
 	<Header />
 	<main id="main-content">
 		<Activities />
 		<Hero />
+		<SiteLinks />
 		<Services />
 		<Schedule />
 		<GoogleReviews />

@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+---
+
+<BaseLayout
+	title="Tentang Klinik El'Mozza | Bidan Dhora Yufita, SST, MKM"
+	description="Profil Klinik El'Mozza di Depok, komitmen pelayanan ibu dan bayi, serta informasi praktik Bidan Dhora Yufita, SST, MKM."
+	keywords="tentang klinik elmozza, bidan dhora yufita, profil klinik bidan depok"
+	image="https://files.elmozza.net/Elmozza.jpg"
+>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero" aria-labelledby="tentang-page-title">
+			<div class="container content-narrow">
+				<h1 id="tentang-page-title">Tentang Klinik El'Mozza</h1>
+				<p>
+					Klinik El'Mozza adalah klinik bidan di Depok yang fokus pada pelayanan kebidanan
+					komprehensif untuk ibu dan bayi, mulai dari masa kehamilan hingga masa nifas.
+				</p>
+				<p class="page-links">
+					<a href="/layanan">Lihat layanan</a>
+					<a href="/jadwal-praktik">Lihat jadwal</a>
+					<a href="/lokasi-kontak">Lihat lokasi</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section-muted" aria-labelledby="profil-klinik-title">
+			<div class="container content-narrow">
+				<h2 id="profil-klinik-title">Profil Singkat</h2>
+				<p>
+					Dengan pendekatan yang hangat dan profesional, Klinik El'Mozza mendampingi ibu dalam
+					setiap fase penting, termasuk pemeriksaan rutin, edukasi persiapan persalinan, konseling
+					laktasi, serta perawatan masa nifas.
+				</p>
+				<p>
+					Klinik ini dikelola oleh Bidan Dhora Yufita, SST, MKM, dengan komitmen menjaga kualitas
+					pelayanan serta komunikasi yang jelas kepada pasien dan keluarga.
+				</p>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</BaseLayout>

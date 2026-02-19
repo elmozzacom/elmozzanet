@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import GoogleReviews from "../components/sections/GoogleReviews.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<BaseLayout
+	title="Ulasan Google Klinik El'Mozza | Bidan Depok"
+	description="Lihat ulasan pasien Klinik El'Mozza melalui Google Reviews untuk mengetahui pengalaman pelayanan di klinik bidan Depok."
+	keywords="ulasan bidan depok, review klinik elmozza, testimoni klinik bersalin depok"
+	image="https://files.elmozza.net/Elmozza.jpg"
+>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero" aria-labelledby="ulasan-page-title">
+			<div class="container content-narrow">
+				<h1 id="ulasan-page-title">Ulasan Google Pasien Klinik El'Mozza</h1>
+				<p>
+					Halaman ini menampilkan widget Google Reviews untuk membantu calon pasien melihat
+					penilaian dan pengalaman pasien sebelumnya.
+				</p>
+				<p class="page-links">
+					<a href="/layanan">Lihat layanan</a>
+					<a href="/lokasi-kontak">Lihat lokasi</a>
+					<a href="/faq">Baca FAQ</a>
+				</p>
+			</div>
+		</section>
+		<GoogleReviews />
+		<CTA />
+	</main>
+	<Footer />
+</BaseLayout>

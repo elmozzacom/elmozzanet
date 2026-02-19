@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+
+const faqs = [
+	{
+		question: "Klinik El'Mozza buka setiap hari?",
+		answer:
+			"Ya. Jam operasional klinik setiap hari (Senin-Minggu) pukul 07.30-21.00."
+	},
+	{
+		question: "Bagaimana cara reservasi pemeriksaan?",
+		answer:
+			"Reservasi dapat dilakukan melalui telepon atau WhatsApp di nomor 0811-1712-718."
+	},
+	{
+		question: "Apakah klinik melayani konsultasi menyusui?",
+		answer:
+			"Ya, Klinik El'Mozza menyediakan konsultasi menyusui sebagai bagian dari layanan ibu dan bayi."
+	},
+	{
+		question: "Di mana lokasi klinik?",
+		answer:
+			"Klinik beralamat di Jl. K.H.M. Usman No.88, RT.06/RW.04, Kukusan, Kecamatan Beji, Kota Depok, Jawa Barat 16425."
+	},
+	{
+		question: "Apakah tersedia layanan untuk bayi baru lahir?",
+		answer:
+			"Ya, tersedia layanan pendampingan dan pemeriksaan awal untuk bayi baru lahir."
+	}
+];
+
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map((item) => ({
+		"@type": "Question",
+		name: item.question,
+		acceptedAnswer: {
+			"@type": "Answer",
+			text: item.answer
+		}
+	}))
+};
+---
+
+<BaseLayout
+	title="FAQ Bidan Depok | Klinik El'Mozza"
+	description="Pertanyaan yang sering ditanyakan pasien tentang layanan, jadwal, lokasi, dan reservasi Klinik El'Mozza di Depok."
+	keywords="faq bidan depok, pertanyaan klinik elmozza, reservasi klinik bersalin depok"
+	image="https://files.elmozza.net/Elmozza.jpg"
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+	</Fragment>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero" aria-labelledby="faq-page-title">
+			<div class="container content-narrow">
+				<h1 id="faq-page-title">FAQ Klinik El'Mozza</h1>
+				<p>
+					Kumpulan pertanyaan umum seputar jadwal, layanan, dan reservasi untuk membantu pasien
+					mendapatkan informasi lebih cepat.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section-muted" aria-labelledby="faq-list-title">
+			<div class="container content-narrow">
+				<h2 id="faq-list-title">Pertanyaan Umum Pasien</h2>
+				<div class="faq-list">
+					{
+						faqs.map((item) => (
+							<article class="faq-item">
+								<h3>{item.question}</h3>
+								<p>{item.answer}</p>
+							</article>
+						))
+					}
+				</div>
+				<p class="page-links">
+					<a href="/layanan">Lihat layanan</a>
+					<a href="/lokasi-kontak">Lihat lokasi</a>
+					<a href="/ulasan-google">Lihat ulasan</a>
+				</p>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Services from "../components/sections/Services.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<BaseLayout
+	title="Layanan Bidan Depok | Klinik El'Mozza"
+	description="Daftar layanan Klinik El'Mozza di Depok: pemeriksaan kehamilan, konseling menyusui, layanan nifas, dan imunisasi dasar bayi."
+	keywords="layanan bidan depok, klinik elmozza, pemeriksaan kehamilan depok, konseling menyusui depok"
+	image="https://files.elmozza.net/Elmozza.jpg"
+>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero" aria-labelledby="layanan-page-title">
+			<div class="container content-narrow">
+				<h1 id="layanan-page-title">Layanan Klinik El'Mozza</h1>
+				<p>
+					Halaman ini menjelaskan layanan utama yang tersedia di Klinik El'Mozza untuk kebutuhan
+					ibu hamil, ibu nifas, bayi, dan keluarga di Depok.
+				</p>
+				<p class="page-links">
+					<a href="/jadwal-praktik">Lihat jadwal praktik</a>
+					<a href="/lokasi-kontak">Lihat lokasi dan kontak</a>
+					<a href="/faq">Baca FAQ</a>
+				</p>
+			</div>
+		</section>
+		<Services />
+		<CTA />
+	</main>
+	<Footer />
+</BaseLayout>

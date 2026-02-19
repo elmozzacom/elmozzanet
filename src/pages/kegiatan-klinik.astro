@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Activities from "../components/sections/Activities.astro";
+---
+
+<BaseLayout
+	title="Kegiatan Klinik El'Mozza | Dokumentasi Pelayanan"
+	description="Galeri kegiatan Klinik El'Mozza yang menampilkan dokumentasi pelayanan kebidanan, pendampingan ibu hamil, nifas, dan bayi."
+	keywords="kegiatan klinik elmozza, dokumentasi bidan depok, pelayanan klinik bersalin depok"
+	image="https://files.elmozza.net/Elmozza.jpg"
+>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero" aria-labelledby="kegiatan-page-title">
+			<div class="container content-narrow">
+				<h1 id="kegiatan-page-title">Kegiatan dan Pelayanan Klinik El'Mozza</h1>
+				<p>
+					Galeri ini berisi dokumentasi aktivitas harian klinik untuk memberi gambaran suasana
+					pelayanan dan pendampingan pasien.
+				</p>
+				<p class="page-links">
+					<a href="/layanan">Lihat layanan</a>
+					<a href="/ulasan-google">Lihat ulasan</a>
+					<a href="/lokasi-kontak">Lihat lokasi</a>
+				</p>
+			</div>
+		</section>
+		<Activities />
+	</main>
+	<Footer />
+</BaseLayout>

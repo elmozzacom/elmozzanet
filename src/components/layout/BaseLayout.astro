@@ -13,7 +13,7 @@ const {
 	title,
 	description,
 	canonical,
-	image = "/favicon.svg",
+	image = "/favicon.png",
 	keywords = "bidan depok, klinik elmozza, klinik bersalin depok, bidan kukusan beji, klinik ibu dan anak depok"
 } = Astro.props;
 
@@ -35,8 +35,8 @@ const imageUrl = new URL(image, siteOrigin).toString();
 		<meta name="googlebot" content="index,follow,max-image-preview:large" />
 		<meta name="robots" content="index,follow,max-image-preview:large" />
 		<link rel="canonical" href={canonicalUrl} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="shortcut icon" href="/favicon.png" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="id_ID" />
 		<meta property="og:title" content={title} />

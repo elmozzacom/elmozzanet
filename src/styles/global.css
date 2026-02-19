@@ -24,7 +24,7 @@ body {
 	font-family: "Trebuchet MS", Verdana, sans-serif;
 	line-height: 1.6;
 	color: var(--text);
-	background: linear-gradient(180deg, #fbfaf7 0%, var(--bg) 60%, #f2f6f4 100%);
+	background: #ffffff;
 }
 
 h1,
@@ -67,7 +67,7 @@ a {
 	position: sticky;
 	top: 0;
 	z-index: 20;
-	background: rgba(247, 245, 239, 0.96);
+	background: #ffffff;
 	backdrop-filter: blur(8px);
 	border-bottom: 1px solid var(--border);
 }
@@ -447,9 +447,10 @@ address {
 }
 
 .site-footer {
-	background: #122224;
-	color: #f2f7f6;
+	background: #ffffff;
+	color: var(--text);
 	padding: 2.25rem 0 1rem;
+	border-top: 1px solid var(--border);
 }
 
 .footer-inner {
@@ -491,7 +492,7 @@ address {
 .footer-bottom {
 	margin-top: 1.25rem;
 	padding-top: 0.9rem;
-	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-top: 1px solid var(--border);
 	font-size: 0.92rem;
 }
 
@@ -510,12 +511,17 @@ address {
 @media (max-width: 900px) {
 	.header-inner {
 		flex-wrap: wrap;
+		justify-content: center;
+		text-align: center;
+		row-gap: 0.75rem;
 	}
 
 	.nav-list {
 		order: 3;
 		width: 100%;
 		justify-content: center;
+		flex-wrap: wrap;
+		gap: 0.7rem 1rem;
 		padding-top: 0.2rem;
 	}
 
@@ -528,6 +534,44 @@ address {
 
 	.hero {
 		padding-top: 4rem;
+	}
+
+	.hero-grid > div {
+		text-align: center;
+	}
+
+	.lead {
+		margin-inline: auto;
+	}
+
+	.button-group {
+		justify-content: center;
+	}
+
+	.hero-highlight {
+		max-width: 620px;
+		margin-inline: auto;
+	}
+
+	.section-heading-left {
+		text-align: center;
+	}
+
+	.location-grid > article,
+	.location-note,
+	.site-footer,
+	.footer-bottom {
+		text-align: center;
+	}
+
+	address {
+		text-align: center;
+	}
+
+	.contact-list,
+	.footer-links,
+	.footer-brand {
+		justify-items: center;
 	}
 
 	.footer-brand {
@@ -553,5 +597,30 @@ address {
 	.slider-controls {
 		flex-wrap: wrap;
 		justify-content: center;
+	}
+
+	.section {
+		padding: 2.8rem 0;
+	}
+
+	.header-contact {
+		width: min(260px, 100%);
+		text-align: center;
+	}
+
+	.nav-list a {
+		font-size: 0.94rem;
+	}
+
+	.activity-content {
+		text-align: center;
+	}
+
+	.schedule-panel {
+		overflow-x: auto;
+	}
+
+	.schedule-table {
+		min-width: 560px;
 	}
 }

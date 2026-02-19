@@ -63,6 +63,45 @@ a {
 	z-index: 1000;
 }
 
+.floating-whatsapp {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	z-index: 60;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 0.72rem 0.95rem;
+	background: #25d366;
+	color: #ffffff;
+	border-radius: 999px;
+	text-decoration: none;
+	box-shadow: 0 10px 20px rgba(37, 211, 102, 0.35);
+	font-weight: 700;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+	background: #1ebe5d;
+}
+
+.floating-whatsapp-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
+.floating-whatsapp-icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+.floating-whatsapp-text {
+	line-height: 1;
+}
+
 .site-header {
 	position: sticky;
 	top: 0;
@@ -622,5 +661,16 @@ address {
 
 	.schedule-table {
 		min-width: 560px;
+	}
+
+	.floating-whatsapp {
+		right: 0.8rem;
+		bottom: 0.85rem;
+		padding: 0.65rem 0.82rem;
+		font-size: 0.9rem;
+	}
+
+	.floating-whatsapp-text {
+		display: none;
 	}
 }

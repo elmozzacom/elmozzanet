@@ -9,13 +9,65 @@ import Schedule from "../components/sections/Schedule.astro";
 import GoogleReviews from "../components/sections/GoogleReviews.astro";
 import Location from "../components/sections/Location.astro";
 import CTA from "../components/sections/CTA.astro";
+
+const siteUrl = "https://elmozza.net/";
+const localBusinessSchema = {
+	"@context": "https://schema.org",
+	"@type": "MedicalClinic",
+	name: "Klinik El'Mozza - Bidan Dhora Yufita, SST, MKM",
+	url: siteUrl,
+	image: "https://files.elmozza.net/Elmozza.jpg",
+	telephone: "+62-811-1712-718",
+	priceRange: "$$",
+	address: {
+		"@type": "PostalAddress",
+		streetAddress: "Jl. K.H.M. Usman No.88, RT.06/RW.04, Kukusan, Kecamatan Beji",
+		addressLocality: "Depok",
+		addressRegion: "Jawa Barat",
+		postalCode: "16425",
+		addressCountry: "ID"
+	},
+	areaServed: ["Depok", "Jawa Barat"],
+	openingHoursSpecification: [
+		{
+			"@type": "OpeningHoursSpecification",
+			dayOfWeek: [
+				"Monday",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday",
+				"Saturday",
+				"Sunday"
+			],
+			opens: "07:30",
+			closes: "21:00"
+		}
+	],
+	sameAs: [
+		"https://wa.me/628111712718",
+		"https://www.google.com/maps/place/Klinik+El'Mozza+-+Bidan+Dhora+Yufita,+SST,+MKM"
+	],
+	keywords: [
+		"bidan depok",
+		"klinik elmozza",
+		"klinik bersalin depok",
+		"bidan kukusan beji",
+		"klinik bidan depok",
+		"klinik ibu dan anak depok"
+	]
+};
 ---
 
 <BaseLayout
 	title="Klinik El'Mozza - Bidan Dhora Yufita, SST, MKM | Depok"
 	description="Klinik El'Mozza - Bidan Dhora Yufita, SST, MKM di Depok, Jawa Barat. Layanan kebidanan dengan jam operasional setiap hari pukul 07.30-21.00."
 	image="https://files.elmozza.net/Elmozza.jpg"
+	keywords="bidan depok, klinik elmozza, klinik bersalin depok, bidan kukusan beji, klinik bidan depok, klinik ibu dan anak depok"
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+	</Fragment>
 	<Header />
 	<main id="main-content">
 		<Activities />

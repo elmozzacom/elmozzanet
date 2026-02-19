@@ -81,8 +81,21 @@ a {
 }
 
 .brand {
+	display: inline-flex;
+	align-items: center;
 	font-weight: 700;
 	text-decoration: none;
+}
+
+.brand-logo {
+	width: 220px;
+	height: 56px;
+	object-fit: contain;
+	flex-shrink: 0;
+}
+
+.brand-text {
+	display: none;
 }
 
 .nav-list {
@@ -243,6 +256,93 @@ main {
 	margin-bottom: 0;
 }
 
+.activities-intro {
+	max-width: 70ch;
+	margin: 0 auto;
+	color: var(--muted);
+}
+
+.activities-slider {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 0.85rem;
+	overflow: hidden;
+}
+
+.slider-stage {
+	position: relative;
+	min-height: 460px;
+}
+
+.activity-figure {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.activity-slide {
+	display: none;
+}
+
+.activity-slide.is-active {
+	display: block;
+}
+
+.activity-image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 8;
+	object-fit: cover;
+	background: #dcebe8;
+}
+
+.activity-content {
+	padding: 1.15rem;
+}
+
+.activity-content h3 {
+	font-size: 1.03rem;
+	margin-bottom: 0.45rem;
+}
+
+.activity-content p {
+	margin: 0;
+	color: var(--muted);
+}
+
+.slider-controls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.8rem;
+	padding: 0.85rem 1rem 1rem;
+	border-top: 1px solid var(--border);
+	background: #f9fbfa;
+}
+
+.slider-btn {
+	border: 1px solid var(--border);
+	background: #fff;
+	color: var(--text);
+	padding: 0.5rem 0.8rem;
+	border-radius: 999px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.slider-btn:hover,
+.slider-btn:focus-visible {
+	border-color: var(--primary);
+	color: var(--primary);
+}
+
+.slider-counter {
+	margin: 0;
+	color: var(--muted);
+	font-weight: 700;
+}
+
 .schedule-panel {
 	background: var(--surface);
 	border: 1px solid var(--border);
@@ -288,6 +388,13 @@ main {
 	font-weight: 700;
 }
 
+.reviews-widget {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 0.85rem;
+	padding: 1rem;
+}
+
 .location-grid {
 	display: grid;
 	grid-template-columns: 1.3fr 1fr;
@@ -318,6 +425,15 @@ address {
 	padding: 1.1rem;
 }
 
+.location-map {
+	display: block;
+	width: 100%;
+	height: 320px;
+	border: 0;
+	border-radius: 0.7rem;
+	margin-bottom: 0.9rem;
+}
+
 .cta {
 	text-align: center;
 }
@@ -342,8 +458,22 @@ address {
 	gap: 1rem;
 }
 
+.footer-brand {
+	display: grid;
+	gap: 0.55rem;
+	margin-bottom: 0.7rem;
+}
+
+.footer-logo {
+	width: 220px;
+	height: 56px;
+	object-fit: contain;
+	flex-shrink: 0;
+}
+
 .footer-title {
 	font-size: 1.2rem;
+	margin-bottom: 0;
 }
 
 .footer-links {
@@ -398,5 +528,30 @@ address {
 
 	.hero {
 		padding-top: 4rem;
+	}
+
+	.footer-brand {
+		gap: 0.45rem;
+	}
+}
+
+@media (max-width: 640px) {
+	.brand-logo,
+	.footer-logo {
+		width: 180px;
+		height: 46px;
+	}
+
+	.location-map {
+		height: 280px;
+	}
+
+	.slider-stage {
+		min-height: 360px;
+	}
+
+	.slider-controls {
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 }

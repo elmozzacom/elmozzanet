@@ -1,0 +1,231 @@
+---
+const activities = [
+	{
+		title: "Konsultasi Kehamilan Personal",
+		description:
+			"Pendampingan kondisi kehamilan ibu secara personal agar setiap trimester berjalan aman dan terarah."
+	},
+	{
+		title: "Pemeriksaan Rutin Ibu Hamil",
+		description:
+			"Kegiatan pemeriksaan berkala untuk memantau kesehatan ibu dan tumbuh kembang janin."
+	},
+	{
+		title: "Edukasi Nutrisi Ibu",
+		description:
+			"Edukasi pola makan dan kebutuhan gizi selama masa kehamilan serta menyusui."
+	},
+	{
+		title: "Persiapan Persalinan",
+		description:
+			"Sesi edukasi persiapan persalinan agar ibu dan keluarga lebih siap menghadapi proses kelahiran."
+	},
+	{
+		title: "Konseling Menyusui",
+		description:
+			"Pelayanan konsultasi teknik menyusui dan solusi tantangan laktasi pada awal kelahiran."
+	},
+	{
+		title: "Pendampingan Masa Nifas",
+		description:
+			"Monitoring kondisi ibu pasca melahirkan untuk mendukung pemulihan yang optimal."
+	},
+	{
+		title: "Pelayanan Bayi Baru Lahir",
+		description:
+			"Pemeriksaan awal bayi baru lahir untuk memastikan kondisi umum bayi tetap sehat."
+	},
+	{
+		title: "Konsultasi Kesehatan Reproduksi",
+		description:
+			"Layanan konseling untuk menjaga kesehatan reproduksi perempuan pada berbagai fase usia."
+	},
+	{
+		title: "Pendampingan Keluarga",
+		description:
+			"Kegiatan edukasi bagi keluarga agar dukungan untuk ibu dan bayi berjalan lebih terstruktur."
+	},
+	{
+		title: "Pemantauan Tumbuh Kembang Bayi",
+		description:
+			"Pelayanan observasi dasar pertumbuhan bayi sebagai bagian dari perawatan berkelanjutan."
+	},
+	{
+		title: "Kelas Edukasi Ibu dan Anak",
+		description:
+			"Sesi belajar interaktif terkait kesehatan ibu, bayi, serta praktik perawatan harian."
+	},
+	{
+		title: "Konseling MPASI Awal",
+		description:
+			"Edukasi pengenalan makanan pendamping ASI dengan pendekatan yang aman sesuai usia bayi."
+	},
+	{
+		title: "Pelayanan Imunisasi Dasar",
+		description:
+			"Dukungan layanan imunisasi dasar bayi disertai edukasi tindak lanjut untuk orang tua."
+	},
+	{
+		title: "Pemeriksaan Kondisi Ibu Nifas",
+		description:
+			"Pemantauan kondisi fisik dan kenyamanan ibu pada masa nifas melalui evaluasi berkala."
+	},
+	{
+		title: "Edukasi Perawatan Bayi",
+		description:
+			"Pembekalan praktik perawatan harian bayi agar orang tua lebih percaya diri di rumah."
+	},
+	{
+		title: "Kegiatan Konsultasi Tatap Muka",
+		description:
+			"Pelayanan konsultasi langsung dengan suasana klinik yang nyaman dan komunikatif."
+	},
+	{
+		title: "Pendampingan Ibu Menjelang Persalinan",
+		description:
+			"Pendekatan suportif untuk ibu menjelang hari persalinan agar lebih tenang dan siap."
+	},
+	{
+		title: "Pelayanan Kontrol Pasca Persalinan",
+		description:
+			"Jadwal kontrol pasca persalinan untuk memastikan kesehatan ibu dan bayi tetap terjaga."
+	},
+	{
+		title: "Edukasi Kesehatan Ibu",
+		description:
+			"Kegiatan edukasi rutin terkait kebiasaan sehat, kebersihan, dan perawatan diri ibu."
+	},
+	{
+		title: "Konsultasi Keluhan Umum Kehamilan",
+		description:
+			"Penanganan awal keluhan umum selama kehamilan dengan arahan tindak lanjut yang jelas."
+	},
+	{
+		title: "Pelayanan Komunikasi Cepat",
+		description:
+			"Pendampingan komunikasi melalui telepon dan WhatsApp untuk kebutuhan informasi layanan."
+	},
+	{
+		title: "Kegiatan Klinik Bersama Pasien",
+		description:
+			"Dokumentasi interaksi layanan klinik yang berfokus pada kenyamanan ibu dan keluarga."
+	},
+	{
+		title: "Suasana Pelayanan Klinik",
+		description:
+			"Gambaran suasana pelayanan harian di Klinik El'Mozza yang tertib dan ramah pasien."
+	},
+	{
+		title: "Pendampingan Berkelanjutan",
+		description:
+			"Layanan berkelanjutan dari masa kehamilan, persalinan, hingga masa nifas dan laktasi."
+	},
+	{
+		title: "Komitmen Layanan Ibu dan Bayi",
+		description:
+			"Dokumentasi komitmen Klinik El'Mozza dalam memberi layanan kebidanan yang menyeluruh."
+	}
+];
+
+const imageUrl = (index: number) =>
+	`https://files.elmozza.net/Kegiatan%20di%20Klinik%20Elmozza%20%28${index + 1}%29.png`;
+---
+
+<section id="kegiatan" class="section activities-slider-section" aria-labelledby="activities-title">
+	<div class="container">
+		<header class="section-heading">
+			<p class="eyebrow">Kegiatan dan Pelayanan</p>
+			<h2 id="activities-title">Slider Aktivitas Klinik El'Mozza</h2>
+			<p class="activities-intro">
+				Dokumentasi kegiatan pelayanan kebidanan harian di Klinik El'Mozza.
+			</p>
+		</header>
+
+		<div class="activities-slider" data-activities-slider>
+			<div class="slider-stage" role="region" aria-label="Slider kegiatan Klinik El'Mozza">
+				{
+					activities.map((activity, index) => (
+						<article
+							class:list={["activity-slide", index === 0 && "is-active"]}
+							data-slide
+							aria-hidden={index === 0 ? "false" : "true"}
+						>
+							<figure class="activity-figure">
+								<img
+									class="activity-image"
+									src={imageUrl(index)}
+									alt={`${activity.title} di Klinik El'Mozza`}
+									loading={index === 0 ? "eager" : "lazy"}
+									decoding="async"
+								/>
+								<figcaption class="activity-content">
+									<h3>{activity.title}</h3>
+									<p>{activity.description}</p>
+								</figcaption>
+							</figure>
+						</article>
+					))
+				}
+			</div>
+
+			<div class="slider-controls">
+				<button type="button" class="slider-btn" data-prev aria-label="Gambar sebelumnya">
+					Sebelumnya
+				</button>
+				<p class="slider-counter" aria-live="polite">
+					<span data-current>1</span> / {activities.length}
+				</p>
+				<button type="button" class="slider-btn" data-next aria-label="Gambar berikutnya">
+					Berikutnya
+				</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const slider = document.querySelector("[data-activities-slider]");
+
+	if (slider) {
+		const slides = Array.from(slider.querySelectorAll("[data-slide]"));
+		const prevButton = slider.querySelector("[data-prev]");
+		const nextButton = slider.querySelector("[data-next]");
+		const currentText = slider.querySelector("[data-current]");
+		let currentIndex = 0;
+		let timerId = 0;
+
+		const render = () => {
+			slides.forEach((slide, index) => {
+				const isActive = index === currentIndex;
+				slide.classList.toggle("is-active", isActive);
+				slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+			});
+			if (currentText) currentText.textContent = String(currentIndex + 1);
+		};
+
+		const move = (step) => {
+			currentIndex = (currentIndex + step + slides.length) % slides.length;
+			render();
+		};
+
+		const stopAutoPlay = () => {
+			if (timerId) window.clearInterval(timerId);
+			timerId = 0;
+		};
+
+		const startAutoPlay = () => {
+			stopAutoPlay();
+			timerId = window.setInterval(() => move(1), 5000);
+		};
+
+		prevButton?.addEventListener("click", () => move(-1));
+		nextButton?.addEventListener("click", () => move(1));
+		slider.addEventListener("mouseenter", stopAutoPlay);
+		slider.addEventListener("mouseleave", startAutoPlay);
+		slider.addEventListener("focusin", stopAutoPlay);
+		slider.addEventListener("focusout", startAutoPlay);
+
+		render();
+		startAutoPlay();
+	}
+</script>

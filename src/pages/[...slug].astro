@@ -1,0 +1,24 @@
+---
+import ArticlePage from "../components/sections/ArticlePage.astro";
+import { articles, getArticleBySlug } from "../data/articles";
+
+export function getStaticPaths() {
+	return articles.map((article) => ({
+		params: { slug: article.slug }
+	}));
+}
+
+const slugParam = Astro.params.slug ?? "";
+const article = getArticleBySlug(slugParam);
+
+if (!article) {
+	throw new Error(`Article not found for slug: ${slugParam}`);
+}
+
+const relatedArticles = articles
+	.filter((entry) => entry.slug !== article.slug)
+	.slice(0, 4)
+	.map((entry) => ({ title: entry.title, slug: entry.slug }));
+---
+
+<ArticlePage article={article} relatedArticles={relatedArticles} />

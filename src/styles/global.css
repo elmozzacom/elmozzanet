@@ -625,6 +625,69 @@ address {
 	color: var(--muted);
 }
 
+.article-hero .content-narrow {
+	width: min(860px, 100%);
+	text-align: left;
+}
+
+.article-tag {
+	margin-bottom: 0.9rem;
+}
+
+.article-meta {
+	margin: 0 0 1rem;
+	color: var(--muted);
+	font-weight: 700;
+}
+
+.article-body {
+	width: min(860px, 100%);
+}
+
+.article-section {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 0.85rem;
+	padding: 1.25rem;
+	margin-bottom: 1rem;
+}
+
+.article-section:last-child {
+	margin-bottom: 0;
+}
+
+.article-section h2 {
+	font-size: 1.25rem;
+	margin-bottom: 0.55rem;
+}
+
+.article-section p {
+	color: var(--muted);
+}
+
+.article-list {
+	margin: 0.9rem 0 0;
+	padding-left: 1.2rem;
+	display: grid;
+	gap: 0.5rem;
+}
+
+.article-related-links {
+	display: grid;
+	gap: 0.55rem;
+}
+
+.article-related-links a {
+	color: var(--primary-strong);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.article-related-links a:hover,
+.article-related-links a:focus-visible {
+	text-decoration: underline;
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -752,6 +815,10 @@ address {
 
 	.schedule-table {
 		min-width: 560px;
+	}
+
+	.article-section {
+		padding: 1rem;
 	}
 
 	.floating-whatsapp {

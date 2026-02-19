@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import Header from "../layout/Header.astro";
+import Footer from "../layout/Footer.astro";
+import type { ArticleItem } from "../../data/articles";
+
+interface RelatedArticle {
+	title: string;
+	slug: string;
+}
+
+interface Props {
+	article: ArticleItem;
+	relatedArticles?: RelatedArticle[];
+}
+
+const { article, relatedArticles = [] } = Astro.props;
+
+const articleSchema = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	headline: article.title,
+	description: article.description,
+	datePublished: article.publishedAt,
+	dateModified: article.publishedAt,
+	author: {
+		"@type": "Organization",
+		name: "Klinik El'Mozza - Bidan Dhora Yufita, SST, MKM"
+	},
+	publisher: {
+		"@type": "Organization",
+		name: "Klinik El'Mozza - Bidan Dhora Yufita, SST, MKM",
+		logo: {
+			"@type": "ImageObject",
+			url: "https://files.elmozza.net/Elmozza.jpg"
+		}
+	},
+	mainEntityOfPage: article.canonical,
+	image: "https://files.elmozza.net/Elmozza.jpg",
+	inLanguage: "id-ID"
+};
+---
+
+<BaseLayout
+	title={`${article.title} | Klinik El'Mozza`}
+	description={article.description}
+	keywords={article.keywords}
+	image="https://files.elmozza.net/Elmozza.jpg"
+	canonical={article.canonical}
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+	</Fragment>
+	<Header />
+	<main id="main-content">
+		<section class="section page-hero article-hero" aria-labelledby="article-title">
+			<div class="container content-narrow">
+				<p class="eyebrow article-tag">Artikel Kesehatan Ibu dan Bayi</p>
+				<h1 id="article-title">{article.title}</h1>
+				<p class="article-meta">
+					Dipublikasikan pada <time datetime={article.publishedAt}>{article.publishedLabel}</time>
+				</p>
+				<p>{article.intro}</p>
+			</div>
+		</section>
+
+		<section class="section section-muted" aria-labelledby="article-content-title">
+			<div class="container article-body">
+				<h2 id="article-content-title" class="sr-only">Isi Artikel</h2>
+				{
+					article.sections.map((section) => (
+						<article class="article-section">
+							<h2>{section.heading}</h2>
+							{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+							{section.bullets && (
+								<ul class="article-list">
+									{section.bullets.map((item) => (
+										<li>{item}</li>
+									))}
+								</ul>
+							)}
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		{
+			relatedArticles.length > 0 && (
+				<section class="section" aria-labelledby="related-articles-title">
+					<div class="container content-narrow">
+						<h2 id="related-articles-title">Artikel Terkait</h2>
+						<p class="article-related-links">
+							{relatedArticles.map((entry) => <a href={`/${entry.slug}/`}>{entry.title}</a>)}
+						</p>
+					</div>
+				</section>
+			)
+		}
+	</main>
+	<Footer />
+</BaseLayout>

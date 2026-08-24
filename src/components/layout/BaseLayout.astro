@@ -1,5 +1,6 @@
 ---
 import "../../styles/global.css";
+import BottomNav from "./BottomNav.astro";
 
 interface Props {
 	title: string;
@@ -69,5 +70,45 @@ const imageUrl = new URL(image, siteOrigin).toString();
 			</span>
 			<span class="floating-whatsapp-text">WhatsApp</span>
 		</a>
+		<BottomNav />
+		<script is:inline>
+			(() => {
+				const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+				/* Header menempel: beri bayangan setelah digulir */
+				const header = document.querySelector(".site-header");
+				if (header) {
+					const onScroll = () => {
+						header.classList.toggle("is-stuck", window.scrollY > 8);
+					};
+					onScroll();
+					window.addEventListener("scroll", onScroll, { passive: true });
+				}
+
+				if (reduce) return;
+
+				/* Animasi masuk bertahap saat elemen terlihat */
+				const targets = document.querySelectorAll(
+					".card, .quick-link-card, .section-heading, .section-heading-left, .hero-highlight"
+				);
+				if (!targets.length || !("IntersectionObserver" in window)) return;
+
+				targets.forEach((el) => el.classList.add("reveal"));
+
+				const io = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("is-visible");
+								io.unobserve(entry.target);
+							}
+						});
+					},
+					{ rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+				);
+
+				targets.forEach((el) => io.observe(el));
+			})();
+		</script>
 	</body>
 </html>

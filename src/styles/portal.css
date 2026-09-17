@@ -262,7 +262,7 @@ body.pk-body h4 {
 	font-weight: 700;
 	font-size: 0.93rem;
 	line-height: 1.3;
-	overflow-wrap: anywhere;
+	overflow-wrap: break-word;
 }
 .ui-row-sub {
 	font-size: 0.78rem;
@@ -274,7 +274,9 @@ body.pk-body h4 {
 	gap: 0.35rem;
 	flex-wrap: wrap;
 	justify-content: flex-end;
+	flex: 0 0 auto;
 }
+.ui-row-actions .ui-btn { white-space: nowrap; }
 .ui-avatar {
 	flex: 0 0 auto;
 	width: 2.5rem;
@@ -1264,7 +1266,11 @@ body.pk-body h4 {
 }
 .ko-antrean .ui-row {
 	border-left: 4px solid var(--border);
+	flex-wrap: wrap;
 }
+.ko-antrean .ui-row .ui-row-main { flex: 1 1 12rem; }
+.ko-antrean .ui-row .ui-chip { flex: 0 0 auto; }
+.ko-antrean .ui-row .ui-row-actions { flex: 0 0 auto; }
 .ko-antrean .ui-row.s-menunggu { border-left-color: var(--pk-sand); }
 .ko-antrean .ui-row.s-checkin { border-left-color: var(--pk-sky); }
 .ko-antrean .ui-row.s-dipanggil { border-left-color: var(--primary); background: var(--pk-teal-tint); }
@@ -1422,6 +1428,12 @@ body.pk-body h4 {
 	.ko-grid-2 { grid-template-columns: 1fr; }
 	.ko-kpis { grid-template-columns: 1fr 1fr; }
 	.ko-kpi .val { font-size: 1.5rem; }
+	.ko-antrean .ui-row .ui-row-actions {
+		flex-basis: 100%;
+		justify-content: flex-start;
+		padding-left: calc(3.2rem + 0.75rem);
+	}
+	.ko-antrean .ui-row .ui-row-actions .ui-btn { flex: 1 1 auto; }
 }
 @media (max-width: 420px) {
 	.pk-slots { grid-template-columns: repeat(3, 1fr); }

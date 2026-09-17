@@ -8,6 +8,7 @@ interface Props {
 	canonical?: string;
 	image?: string;
 	keywords?: string;
+	bare?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
 	description,
 	canonical,
 	image = "/favicon.png",
+	bare = false,
 	keywords = "bidan depok, klinik elmozza, klinik bersalin depok, bidan kukusan beji, klinik ibu dan anak depok"
 } = Astro.props;
 
@@ -53,7 +55,7 @@ const imageUrl = new URL(image, siteOrigin).toString();
 	<body>
 		<a class="skip-link" href="#main-content">Langsung ke konten utama</a>
 		<slot />
-		<a
+		{!bare && (<a
 			class="floating-whatsapp"
 			href="https://wa.me/628111712718"
 			target="_blank"
@@ -69,8 +71,8 @@ const imageUrl = new URL(image, siteOrigin).toString();
 				</svg>
 			</span>
 			<span class="floating-whatsapp-text">WhatsApp</span>
-		</a>
-		<BottomNav />
+		</a>)}
+		{!bare && <BottomNav />}
 		<script is:inline>
 			(() => {
 				const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import PortalPasien from "../components/portal/PortalPasien.svelte";
+import "../styles/portal.css";
+---
+
+<BaseLayout
+	title="Portal Pasien — Klinik El'Mozza (Demo)"
+	description="Demo portal pasien Klinik El'Mozza: buat janji, check-in mandiri, jadwal, notifikasi, dan Buku KIA digital."
+	bare
+>
+	<meta slot="head" name="robots" content="noindex,nofollow" />
+	<main id="main-content">
+		<PortalPasien client:only="svelte" />
+		<noscript><p style="padding:2rem;text-align:center">Portal Pasien membutuhkan JavaScript aktif.</p></noscript>
+	</main>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import PortalKantor from "../components/portal/PortalKantor.svelte";
+import "../styles/portal.css";
+---
+
+<BaseLayout
+	title="Mode Kantor — Klinik El'Mozza (Demo)"
+	description="Demo mode kantor Klinik El'Mozza: dasbor, antrean, pasien, pengguna, log, pengaturan fitur, dan analitik."
+	bare
+>
+	<meta slot="head" name="robots" content="noindex,nofollow" />
+	<main id="main-content">
+		<PortalKantor client:only="svelte" />
+		<noscript><p style="padding:2rem;text-align:center">Mode Kantor membutuhkan JavaScript aktif.</p></noscript>
+	</main>
+</BaseLayout>

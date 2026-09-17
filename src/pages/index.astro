@@ -10,6 +10,7 @@ import Schedule from "../components/sections/Schedule.astro";
 import GoogleReviews from "../components/sections/GoogleReviews.astro";
 import Location from "../components/sections/Location.astro";
 import CTA from "../components/sections/CTA.astro";
+import Sakura from "../components/effects/Sakura.astro";
 
 const siteUrl = "https://elmozza.net/";
 const localBusinessSchema = {
@@ -115,7 +116,7 @@ const siteNavigationSchema = {
 		<script type="application/ld+json" set:html={JSON.stringify(siteNavigationSchema)}></script>
 	</Fragment>
 	<Header />
-	<main id="main-content">
+	<main id="main-content" class="landing-nyaman">
 		<Activities />
 		<Hero />
 		<SiteLinks />
@@ -126,4 +127,5 @@ const siteNavigationSchema = {
 		<CTA />
 	</main>
 	<Footer />
+	<Sakura />
 </BaseLayout>

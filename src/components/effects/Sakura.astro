@@ -1,0 +1,118 @@
+---
+/*
+ * Sakura — kelopak merah muda beterbangan saat halaman digeser atau layar disentuh.
+ * Canvas overlay ringan: pointer-events none, jumlah kelopak dibatasi, berhenti sendiri
+ * saat tidak ada interaksi, dan dimatikan bila prefers-reduced-motion aktif.
+ */
+---
+
+<canvas id="sakura" class="sakura-canvas" aria-hidden="true"></canvas>
+
+<script is:inline>
+	(() => {
+		const canvas = document.getElementById("sakura");
+		if (!canvas) return;
+		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { canvas.remove(); return; }
+		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
+
+		const MAX = 70;
+		const petals = [];
+		let W = 0, H = 0, dpr = 1, raf = 0, running = false, lastScroll = window.scrollY, lastSpawn = 0;
+		const rand = (a, b) => a + Math.random() * (b - a);
+		const PINK = ["#ffd1dc", "#ffb7c5", "#f8a5b8", "#fcc6d0", "#ffe0e8"];
+
+		const resize = () => {
+			dpr = Math.min(2, window.devicePixelRatio || 1);
+			W = window.innerWidth; H = window.innerHeight;
+			canvas.width = W * dpr; canvas.height = H * dpr;
+			canvas.style.width = W + "px"; canvas.style.height = H + "px";
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+		};
+		resize();
+		window.addEventListener("resize", resize, { passive: true });
+
+		const spawn = (x, y, n, burst) => {
+			for (let i = 0; i < n && petals.length < MAX; i++) {
+				petals.push({
+					x: x + rand(-30, 30), y: y + rand(-20, 20),
+					vx: burst ? rand(-1.6, 1.6) : rand(-0.5, 0.5),
+					vy: burst ? rand(-2.2, -0.4) : rand(0.4, 1.3),
+					r: rand(5, 11), rot: rand(0, Math.PI * 2), vr: rand(-0.05, 0.05),
+					sway: rand(0, Math.PI * 2), swayV: rand(0.02, 0.05),
+					life: 1, decay: rand(0.004, 0.008), color: PINK[(Math.random() * PINK.length) | 0]
+				});
+			}
+			if (!running) { running = true; raf = requestAnimationFrame(tick); }
+		};
+
+		const drawPetal = (p) => {
+			ctx.save();
+			ctx.translate(p.x, p.y);
+			ctx.rotate(p.rot);
+			ctx.globalAlpha = Math.max(0, Math.min(1, p.life)) * 0.9;
+			ctx.fillStyle = p.color;
+			ctx.beginPath();
+			// bentuk kelopak: dua kurva dengan lekukan kecil di ujung
+			ctx.moveTo(0, -p.r);
+			ctx.bezierCurveTo(p.r * 0.9, -p.r * 0.9, p.r * 0.9, p.r * 0.5, 0, p.r);
+			ctx.bezierCurveTo(-p.r * 0.9, p.r * 0.5, -p.r * 0.9, -p.r * 0.9, 0, -p.r);
+			ctx.fill();
+			ctx.globalAlpha *= 0.35;
+			ctx.fillStyle = "#e88aa0";
+			ctx.beginPath();
+			ctx.ellipse(0, p.r * 0.15, p.r * 0.22, p.r * 0.55, 0, 0, Math.PI * 2);
+			ctx.fill();
+			ctx.restore();
+		};
+
+		const tick = () => {
+			ctx.clearRect(0, 0, W, H);
+			for (let i = petals.length - 1; i >= 0; i--) {
+				const p = petals[i];
+				p.sway += p.swayV;
+				p.x += p.vx + Math.sin(p.sway) * 0.6;
+				p.y += p.vy;
+				p.vy += 0.012;
+				p.rot += p.vr;
+				p.life -= p.decay;
+				if (p.life <= 0 || p.y > H + 20 || p.x < -20 || p.x > W + 20) { petals.splice(i, 1); continue; }
+				drawPetal(p);
+			}
+			if (petals.length) raf = requestAnimationFrame(tick);
+			else { running = false; ctx.clearRect(0, 0, W, H); }
+		};
+
+		// Geser (scroll): kelopak jatuh dari atas mengikuti arah geser, dibatasi frekuensinya
+		window.addEventListener("scroll", () => {
+			const now = performance.now();
+			const dy = window.scrollY - lastScroll; lastScroll = window.scrollY;
+			if (now - lastSpawn < 90 || Math.abs(dy) < 2) return;
+			lastSpawn = now;
+			const n = Math.min(6, 2 + Math.round(Math.abs(dy) / 40));
+			for (let i = 0; i < n; i++) spawn(rand(0, W), dy > 0 ? -10 : H + 10, 1, false);
+			if (dy < 0) for (const p of petals.slice(-n)) { p.vy = rand(-1.4, -0.6); }
+		}, { passive: true });
+
+		// Sentuh / klik: semburan kecil di titik sentuh
+		const onPoint = (e) => {
+			const t = e.touches ? e.touches[0] : e;
+			if (!t) return;
+			spawn(t.clientX, t.clientY, 8, true);
+		};
+		window.addEventListener("pointerdown", onPoint, { passive: true });
+		// Jejak halus saat jari bergerak di layar sentuh
+		let lastMove = 0;
+		window.addEventListener("touchmove", (e) => {
+			const now = performance.now();
+			if (now - lastMove < 120) return;
+			lastMove = now;
+			const t = e.touches[0]; if (t) spawn(t.clientX, t.clientY, 2, true);
+		}, { passive: true });
+
+		// Sambutan lembut saat halaman dibuka
+		setTimeout(() => { for (let i = 0; i < 10; i++) spawn(rand(0, W), rand(-40, H * 0.3), 1, false); }, 400);
+
+		document.addEventListener("visibilitychange", () => { if (document.hidden && raf) { cancelAnimationFrame(raf); running = false; petals.length = 0; } });
+	})();
+</script>

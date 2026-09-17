@@ -620,7 +620,7 @@ export const buatBooking = (db: DB, pasienId: string, layananId: string, tanggal
 	db.bookings.push(b);
 	const p = pasienById(db, pasienId);
 	const l = layananById(layananId);
-	catatLog(db, "Sistem", `Booking baru: ${p?.nama ?? pasienId} (${l?.singkat ?? layananId}) ${fmtTanggalPendek(tanggal)} ${jam}`);
+	catatLog(db, "Sistem", `Booking baru: ${p?.nama ?? pasienId} (${l?.singkat ?? layananId}) ${fmtTanggalPendek(tanggal)} ${jam} • kode ${kode}`);
 	kirimNotif(db, pasienId, "Booking berhasil dibuat", `${l?.nama ?? layananId} pada ${fmtTanggal(tanggal)} pukul ${jam.replace(":", ".")}. Kode check-in: ${kode}.`);
 	return b;
 };

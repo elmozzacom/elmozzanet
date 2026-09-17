@@ -1448,3 +1448,10 @@ body.pk-body h4 {
 		transition: none;
 	}
 }
+
+/* Status sinkron D1 */
+.ui-sync { font-style: normal; font-weight: 700; font-size: 0.72rem; margin-left: 0.3rem; opacity: 0.85; }
+.ui-sync-sinkron { color: var(--primary-strong); }
+.ui-sync-menyimpan, .ui-sync-mulai { color: var(--muted); }
+.ui-sync-offline { color: var(--pk-danger); }
+.ui-sync-konflik { color: #b35a72; }

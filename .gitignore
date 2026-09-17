@@ -19,3 +19,4 @@ pnpm-debug.log*
 verif-portal/
 yarn-debug.log*
 yarn-error.log*
+.wrangler/

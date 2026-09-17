@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { app, simpan, resetDemo, buatRouter, pergi } from "../../lib/portal/state.svelte";
+	import { sinkron, mulaiSinkron, jadwalkanKirim } from "../../lib/portal/sinkron.svelte";
 	import {
 		LAYANAN, layananById, SLOT_JAM, JAM_BUKA, JAM_TUTUP, WA_KLINIK,
 		today, addDays, fmtTanggal, fmtTanggalPendek, fmtWaktu, waktuRelatif, inisial,
@@ -26,10 +27,12 @@
 		// simpan setiap perubahan state ke localStorage
 		JSON.stringify(app.db);
 		simpan();
+		jadwalkanKirim();
 	});
 	onMount(() => {
 		document.documentElement.classList.add("pk-html");
 		document.body.classList.add("pk-body");
+		return mulaiSinkron();
 	});
 
 	/* ---------- booking ---------- */
@@ -120,7 +123,7 @@
 <div class="pk-app">
 	<div class="ui-banner-demo" role="status">
 		<strong>DEMO</strong>
-		<span>Data tersimpan di browser ini saja — bukan data pasien nyata.</span>
+		<span>Data demo bersama (tersinkron) — bukan data pasien nyata. <em class={`ui-sync ui-sync-${sinkron.status}`}>{sinkron.status === "sinkron" ? "✓ tersinkron" : sinkron.status === "menyimpan" ? "menyimpan…" : sinkron.status === "offline" ? "offline — lokal" : sinkron.status === "konflik" ? "diperbarui dari server" : "memuat…"}</em></span>
 		<button type="button" onclick={() => { if (confirm("Reset seluruh data demo?")) resetDemo(); }}>Reset</button>
 	</div>
 

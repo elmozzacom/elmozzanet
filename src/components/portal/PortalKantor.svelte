@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { app, simpan, resetDemo, buatRouter, pergi } from "../../lib/portal/state.svelte";
+	import { sinkron, mulaiSinkron, jadwalkanKirim } from "../../lib/portal/sinkron.svelte";
 	import {
 		LAYANAN, layananById, today, fmtTanggal, fmtTanggalPendek, fmtWaktu, waktuRelatif, inisial,
 		hitungKehamilan, usiaBayi, masuk, keluar, bolehKantor,
@@ -16,7 +17,7 @@
 	const sesi = $derived(db.session);
 	const masukOk = $derived(bolehKantor(sesi));
 
-	$effect(() => { JSON.stringify(app.db); simpan(); });
+	$effect(() => { JSON.stringify(app.db); simpan(); jadwalkanKirim(); });
 	$effect(() => {
 		if (rute.path !== "/masuk" && !masukOk) pergi("/masuk");
 		if (rute.path === "/masuk" && masukOk) pergi("/dasbor");
@@ -24,6 +25,7 @@
 	onMount(() => {
 		document.documentElement.classList.add("pk-html");
 		document.body.classList.add("pk-body");
+		return mulaiSinkron();
 	});
 
 	/* ---------- masuk ---------- */
@@ -137,7 +139,7 @@
 		</aside>
 
 		<main class="ko-main">
-			<div class="ui-banner-demo" style="margin:-1.25rem -1.5rem 1rem;border-radius:0"><strong>DEMO</strong><span>Data fiktif di browser ini. Bukan rekam medis.</span><button type="button" onclick={() => { if (confirm("Reset seluruh data demo?")) resetDemo(); }}>Reset</button></div>
+			<div class="ui-banner-demo" style="margin:-1.25rem -1.5rem 1rem;border-radius:0"><strong>DEMO</strong><span>Data fiktif bersama (tersinkron). Bukan rekam medis. <em class={`ui-sync ui-sync-${sinkron.status}`}>{sinkron.status === "sinkron" ? "✓ tersinkron" : sinkron.status === "menyimpan" ? "menyimpan…" : sinkron.status === "offline" ? "offline — lokal" : sinkron.status === "konflik" ? "diperbarui dari server" : "memuat…"}</em></span><button type="button" onclick={() => { if (confirm("Reset seluruh data demo?")) resetDemo(); }}>Reset</button></div>
 			<div class="ko-head"><div><h1>{judul[rute.path]?.[0] ?? "Kantor"}</h1><p>{judul[rute.path]?.[1] ?? ""} • {fmtTanggal(today(), true)}</p></div></div>
 
 			{#if rute.path === "/dasbor"}

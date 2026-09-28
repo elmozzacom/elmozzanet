@@ -1,0 +1,50 @@
+---
+// BannerGerak.astro — banner animasi logo baru El'Mozza di bawah header.
+// Video dibuat dengan Remotion (sumber: /video/src/Banner.jsx), diputar
+// otomatis, tanpa suara, berulang. HP memakai versi persegi 720x720,
+// layar lebar memakai 1280x400. Saat pengguna memilih "kurangi gerakan",
+// video tidak diputar — cukup gambar poster (logo tetap terlihat).
+---
+<section class="banner-gerak" aria-label="Klinik El'Mozza — Klinik Bidan di Depok">
+	<div class="container banner-gerak-bingkai">
+		<video
+			class="banner-gerak-video"
+			autoplay
+			muted
+			loop
+			playsinline
+			preload="metadata"
+			poster="/video/banner-klinik-poster.jpg"
+			aria-hidden="true"
+			data-banner-gerak
+		>
+			<source media="(max-width: 640px)" src="/video/banner-klinik-hp.webm" type="video/webm" />
+			<source media="(max-width: 640px)" src="/video/banner-klinik-hp.mp4" type="video/mp4" />
+			<source src="/video/banner-klinik.webm" type="video/webm" />
+			<source src="/video/banner-klinik.mp4" type="video/mp4" />
+		</video>
+		<picture class="banner-gerak-poster">
+			<source media="(max-width: 640px)" srcset="/video/banner-klinik-hp-poster.jpg" />
+			<img src="/video/banner-klinik-poster.jpg" alt="Logo Klinik El'Mozza dan layanan klinik bidan" loading="eager" decoding="async" />
+		</picture>
+	</div>
+</section>
+
+<script>
+	// Hormati "kurangi gerakan": hentikan video, tampilkan poster statis.
+	const video = document.querySelector<HTMLVideoElement>("[data-banner-gerak]");
+	const reduksi = window.matchMedia("(prefers-reduced-motion: reduce)");
+	const atur = () => {
+		if (!video) return;
+		if (reduksi.matches) {
+			video.pause();
+			video.removeAttribute("autoplay");
+			document.documentElement.classList.add("banner-gerak-diam");
+		} else {
+			document.documentElement.classList.remove("banner-gerak-diam");
+			video.play().catch(() => {});
+		}
+	};
+	atur();
+	reduksi.addEventListener?.("change", atur);
+</script>

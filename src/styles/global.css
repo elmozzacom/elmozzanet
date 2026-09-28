@@ -1300,3 +1300,58 @@ button:focus-visible,
 @media (prefers-reduced-motion: reduce) {
 	.sakura-canvas { display: none; }
 }
+
+
+/* ---------- Logo baru El'Mozza (2026-09-28) ----------
+   Logo PNG transparan: tanpa kotak bayangan/sudut membulat bawaan logo JPG lama. */
+.brand-logo,
+.footer-logo {
+	border-radius: 0;
+	box-shadow: none;
+	background: transparent;
+}
+
+/* ---------- Banner gerak (Remotion) di bawah header ---------- */
+.banner-gerak {
+	padding: 0.9rem 0 0.2rem;
+}
+
+.banner-gerak-bingkai {
+	position: relative;
+}
+
+.banner-gerak-video,
+.banner-gerak-poster img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 1280 / 400;
+	object-fit: cover;
+	border-radius: 1.25rem;
+	background: #f7f5ef;
+	box-shadow: 0 10px 30px rgba(15, 82, 66, 0.1);
+}
+
+/* poster hanya tampil bila gerakan dikurangi */
+.banner-gerak-poster {
+	display: none;
+}
+
+.banner-gerak-diam .banner-gerak-video {
+	display: none;
+}
+
+.banner-gerak-diam .banner-gerak-poster {
+	display: block;
+}
+
+@media (max-width: 640px) {
+	.banner-gerak {
+		padding-top: 0.6rem;
+	}
+
+	.banner-gerak-video,
+	.banner-gerak-poster img {
+		aspect-ratio: 1 / 1;
+		border-radius: 1rem;
+	}
+}

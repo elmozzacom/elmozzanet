@@ -1,5 +1,5 @@
 /*
- * Lapisan data DEMO Portal Klinik El'Mozza.
+ * Lapisan data DEMO Portal Klinik EL' Mozza.
  * Seluruh data di sini FIKTIF dan disimpan di localStorage browser pengguna.
  * Tidak ada data pasien nyata, tidak ada NIK, tidak ada nomor telepon nyata.
  */

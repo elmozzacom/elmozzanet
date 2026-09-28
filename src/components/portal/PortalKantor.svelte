@@ -93,7 +93,7 @@
 	<div class="ko-masuk">
 		<div class="ko-masuk-card">
 			<div class="ui-banner-demo"><strong>DEMO</strong><span>Sandi tidak diperiksa. Data tersimpan di browser ini, bukan data pasien nyata.</span></div>
-			<div class="ko-masuk-head"><div class="logo">E</div><h1>Mode Kantor</h1><p>Klinik El'Mozza — dasbor, antrean & pasien untuk bidan dan staf.</p></div>
+			<div class="ko-masuk-head"><div class="logo">E</div><h1>Mode Kantor</h1><p>Klinik EL' Mozza — dasbor, antrean & pasien untuk bidan dan staf.</p></div>
 			<div class="ko-tabs" role="tablist">
 				<button type="button" role="tab" aria-selected={tab === "masuk"} onclick={() => (tab = "masuk")}>Masuk</button>
 				<button type="button" role="tab" aria-selected={tab === "daftar"} onclick={() => (tab = "daftar")}>Daftar Pasien</button>
@@ -122,7 +122,7 @@
 {:else}
 	<div class="ko-shell">
 		<aside class="ko-side">
-			<a class="ko-brand" href="/kantor#/dasbor"><span class="logo">E</span><span><span class="t">Klinik El'Mozza</span><br /><span class="s">Mode Kantor • demo</span></span></a>
+			<a class="ko-brand" href="/kantor#/dasbor"><span class="logo">E</span><span><span class="t">Klinik EL' Mozza</span><br /><span class="s">Mode Kantor • demo</span></span></a>
 			<nav class="ko-nav" aria-label="Menu kantor">
 				{#each menu as m}
 					{#if m.path !== "/pengguna" || sesi?.role === "admin"}

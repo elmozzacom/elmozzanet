@@ -113,7 +113,7 @@ const activities = [
 	{
 		title: "Suasana Pelayanan Klinik",
 		description:
-			"Gambaran suasana pelayanan harian di Klinik El'Mozza yang tertib dan ramah pasien."
+			"Gambaran suasana pelayanan harian di Klinik EL' Mozza yang tertib dan ramah pasien."
 	},
 	{
 		title: "Pendampingan Berkelanjutan",
@@ -123,7 +123,7 @@ const activities = [
 	{
 		title: "Komitmen Layanan Ibu dan Bayi",
 		description:
-			"Dokumentasi komitmen Klinik El'Mozza dalam memberi layanan kebidanan yang menyeluruh."
+			"Dokumentasi komitmen Klinik EL' Mozza dalam memberi layanan kebidanan yang menyeluruh."
 	}
 ];
 
@@ -135,14 +135,14 @@ const imageUrl = (index: number) =>
 	<div class="container">
 		<header class="section-heading">
 			<p class="eyebrow">Kegiatan dan Pelayanan</p>
-			<h2 id="activities-title">Slider Aktivitas Klinik El'Mozza</h2>
+			<h2 id="activities-title">Slider Aktivitas Klinik EL' Mozza</h2>
 			<p class="activities-intro">
-				Dokumentasi kegiatan pelayanan kebidanan harian di Klinik El'Mozza.
+				Dokumentasi kegiatan pelayanan kebidanan harian di Klinik EL' Mozza.
 			</p>
 		</header>
 
 		<div class="activities-slider" data-activities-slider>
-			<div class="slider-stage" role="region" aria-label="Slider kegiatan Klinik El'Mozza">
+			<div class="slider-stage" role="region" aria-label="Slider kegiatan Klinik EL' Mozza">
 				{
 					activities.map((activity, index) => (
 						<article
@@ -154,7 +154,7 @@ const imageUrl = (index: number) =>
 								<img
 									class="activity-image"
 									src={imageUrl(index)}
-									alt={`${activity.title} di Klinik El'Mozza`}
+									alt={`${activity.title} di Klinik EL' Mozza`}
 									loading={index === 0 ? "eager" : "lazy"}
 									decoding="async"
 								/>

@@ -282,9 +282,9 @@
 		<div class="pk-page">
 			{#if b}
 				{@const l = layananById(b.layananId)}
-				{@const qr = buatQR(`ELMOZZA|${b.kode}`)}
+				{@const qr = buatQR(`EL' MOZZA|${b.kode}`)}
 				<div class="pk-tiket">
-					<div class="pk-tiket-head"><div class="ttl">{l?.nama}</div><div class="sub">Klinik El'Mozza • {saya.nama}</div></div>
+					<div class="pk-tiket-head"><div class="ttl">{l?.nama}</div><div class="sub">Klinik EL' Mozza • {saya.nama}</div></div>
 					<div class="pk-tiket-body">
 						<svg class="ui-qr" viewBox={`0 0 ${qr.size} ${qr.size}`} shape-rendering="crispEdges" role="img" aria-label={`Kode QR ${b.kode}`}><path d={qrPath(qr)} /></svg>
 						<div class="pk-kode-lbl">Kode check-in</div>
